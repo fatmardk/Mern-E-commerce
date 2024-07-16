@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const colors = require('colors');
 const connect = require('./config/db');
 const cors = require('cors');
-const userRoutes = require("./routes/users/userRoutes")
+const userRoutes = require("./routes/userRoutes")
 
 
 dotenv.config();

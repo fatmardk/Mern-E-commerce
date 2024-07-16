@@ -1,8 +1,8 @@
 const express = require('express');
 
-const {registerValidations, loginValidations} = require ("../../validations/userValidations")
+const {registerValidations, loginValidations} = require ("../validations/userValidations")
 
-const {register, login} = require('../../Controller/users/usersController');
+const {register, login} = require('../Controller/usersController');
 const router = express.Router();
 
 

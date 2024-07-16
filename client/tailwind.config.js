@@ -162,11 +162,16 @@ export default {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
-      black1:"#030301",
-      black2:"#1a1d24",
-      green1:"4D8B31",
-      yellow1:"FFC800",
-      orange1:"FF8427"
+      yellow1:"#f8d264",
+      brown1:"#ab7c21",
+      dark1:"#665f34",
+      darkgreen:"#718573",
+      lightgreen:"#7baa9c",
+      button:"#4e574f",
+      sidebarbg:"#332f1a",
+      sidebarhv:"#474330",
+      navbar:"#cfb582",
+      dashboard:"#8d9d8f"
     }),
     columns: {
       auto: 'auto',
