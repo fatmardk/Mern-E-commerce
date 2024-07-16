@@ -2,9 +2,10 @@ import React from 'react'
 import duckstore from '../assets/duckstore.png';
 import {Link} from "react-router-dom" 
 
-const Sidebar = () => {
+const Sidebar = ({side,closeSideBar}) => {
   return (
-    <div className='fixed top-0 left-0 w-64 h-screen bg-sidebarbg'>
+    <div className={`fixed top-0 ${side} sm:left-0 w-64 h-screen bg-sidebarbg z-10 transition-all`}>
+      <i class="bi bi-x-lg absolute top-4 right-4 sm:hidden block cursor-pointer text-lg" onClick={closeSideBar}></i>
       <div className='bg-amber-50 h-29 '>
         <img className='h-28 flex ml-5' src={duckstore} alt="logo" />
       </div>
