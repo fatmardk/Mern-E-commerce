@@ -10,6 +10,13 @@
     @apply bg-darkgreen p-3 rounded-sm outline-none w-full
   }
   .btn-indigo{
-    @apply bg-lightgreen2 text-white capitalize font-medium px-4 py-3
+    @apply bg-lightgreen2 text-white capitalize font-medium px-4 py-3 cursor-pointer
+  }
+
+  .alert-danger{
+    @apply text-rose-600 bg-red-200 bg-opacity-60 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-rose-600
+  }
+  .alert-success{
+    @apply text-green-900 bg-green-200 bg-opacity-65 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-green-900
   }
 }
