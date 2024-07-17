@@ -20,6 +20,9 @@ const Sidebar = ({side,closeSideBar}) => {
         <li className='p-3 text-white cursor-pointer hover:bg-sidebarhv transition 200'>
         <i class="bi bi-people mr-2 inline-block text-lg"></i><Link to="/dashboard/products" className='text-base capitalize'>Customers</Link>
         </li>
+        <li className='p-3 text-white cursor-pointer hover:bg-sidebarhv transition 200'>
+        <i class="bi bi-bar-chart mr-2 inline-block text-lg"></i><Link to="/dashboard/categories" className='text-base capitalize'>Categories</Link>
+        </li>
       </ul>
 
 

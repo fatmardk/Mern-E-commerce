@@ -4,6 +4,7 @@ const colors = require('colors');
 const connect = require('./config/db');
 const cors = require('cors');
 const userRoutes = require("./routes/userRoutes")
+const categoryRoutes=require("./routes/categoryRoutes")
 
 
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/api',userRoutes);
+app.use('/api',categoryRoutes);
 
 
 
