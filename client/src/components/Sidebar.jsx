@@ -7,7 +7,7 @@ const Sidebar = ({side,closeSideBar}) => {
     <div className={`fixed top-0 ${side} sm:left-0 w-64 h-screen bg-sidebarbg z-10 transition-all`}>
       <i className="bi bi-x-lg absolute top-4 right-4 sm:hidden block cursor-pointer text-lg" onClick={closeSideBar}></i>
       <div className='bg-amber-50 h-29 '>
-        <img className='h-28 flex ml-5' src={duckstore} alt="logo" />
+        <img className='h-28 flex ml-5 -z-10' src={duckstore} alt="logo" />
       </div>
 
       <ul className='mt-4'>

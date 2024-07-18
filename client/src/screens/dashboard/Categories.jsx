@@ -6,15 +6,19 @@ import {useEffect } from "react";
 import { clearMessage } from "../store/reducers/globalReducer";
 import { useLocation } from "react-router-dom";
 import { useGetCategoriesQuery } from "../store/services/categoryServices";
+import Spinner from "../../components/Spinner";
+import Pagination from "../../components/Pagination";
 
 const Categories = () => {
-  const {page} = useParams();
+  let {page} = useParams();
+  if(!page){
+    page = 1;
+  }
 
   const {success} = useSelector(state => state.globalReducer)
   const dispatch = useDispatch();
   const location = useLocation();
-  const {data = [],isLoading} = useGetCategoriesQuery(page ? page : 1);
-  console.log(data,isLoading);
+  const {data = [],isFetching} = useGetCategoriesQuery(page);
 
   useEffect(() => {
     let timer;
@@ -37,7 +41,26 @@ const Categories = () => {
       </ScreenHeader>
       {success && <div className="alert-success">{success}</div>}
       
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci libero quos asperiores quibusdam illo nulla sint blanditiis? Culpa, itaque dolores laudantium repellendus praesentium illo veniam et ut aspernatur similique numquam.
+      {!isFetching ? data?.categories?.length >0 && <><div>
+        <table className="w-full bg-gray-800 rounded-md">
+          <thead>
+            <tr className="border-b border-gray-100 text-left">
+              <td className="p-3 uppercase text-base font-medium">name</td>
+              <td className="p-3 uppercase text-base font-medium">edit</td>
+              <td className="p-3 uppercase text-base font-medium">delete</td>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.categories?.map(category => (
+              <tr key ={category._id} className="odd:bg-gray-600">
+                <td className="p-3 capitalize text-sm font-normal text-gray-400">{category.name}</td>
+                <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link to={`/dashboard/update-category/${category._id}`} className="btn btn-warning">edit</Link></td>
+                <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link>delete</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> <Pagination page ={parseInt(page)} perPage={data.perPage} count={data.count} path="dashboard/categories" /> </>: <Spinner/>}
     </Wrapper>
     
     </>

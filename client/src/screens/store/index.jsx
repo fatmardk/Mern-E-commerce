@@ -8,8 +8,8 @@ export const store = configureStore({
   reducer: {
     [authService.reducerPath]: authService.reducer,
     [categoryService.reducerPath]: categoryService.reducer,
-    authReducer,
-    globalReducer,
+    authReducer: authReducer,
+    globalReducer: globalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(authService.middleware, categoryService.middleware),
