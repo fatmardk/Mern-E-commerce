@@ -16,7 +16,7 @@ class Category {
         await CategoryModel.create({ name });
         return res.status(201).json({ message: 'Your category has created successfully' });
       } else {
-        return res.status(401).json({ errors: [{ msg: `${name} Category already exists` }] });
+        return res.status(400).json({ errors: [{ msg: `${name} Category already exists` }] });
       }
     } catch (err) {
       return res.status(500).json({ errors: [{ msg: 'Server error' }] });
@@ -56,12 +56,30 @@ class Category {
         return res.status(201).json({ message: 'Your category has updated successfully' });
 
       }else{
-        return res.status(401).json({ msg: `${name} category is already exist` });
+        return res.status(400).json({ msg: `${name} category is already exist` });
       }
     }else{
-      return res.status(401).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
   }
+  async deleteCategory(req, res) {
+    const { id } = req.params;
+    
+    try {
+      // Kategoriyi veritabanından silme işlemi
+      const response = await CategoryModel.deleteOne({ _id: id });
+      
+      if (response.deletedCount > 0) {
+        return res.status(200).json({ message: 'Category has been deleted successfully' });
+      } else {
+        return res.status(404).json({ msg: 'Category not found' });
+      }
+    } catch (error) {
+      console.log(error.message);
+      return res.status(500).json({ msg: 'Internal Server Error' });
+    }
+  }
+  
 }
 
 module.exports = new Category();

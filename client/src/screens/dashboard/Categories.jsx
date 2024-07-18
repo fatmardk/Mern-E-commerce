@@ -3,9 +3,9 @@ import Wrapper from "./Wrapper";
 import { Link , useParams} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {useEffect } from "react";
-import { clearMessage } from "../store/reducers/globalReducer";
+import { clearMessage, setSuccess } from "../store/reducers/globalReducer";
 import { useLocation } from "react-router-dom";
-import { useGetCategoriesQuery } from "../store/services/categoryServices";
+import { useGetCategoriesQuery,useDeleteCategoryMutation } from "../store/services/categoryServices";
 import Spinner from "../../components/Spinner";
 import Pagination from "../../components/Pagination";
 
@@ -19,6 +19,19 @@ const Categories = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const {data = [],isFetching} = useGetCategoriesQuery(page);
+  const [removeCategory, response] = useDeleteCategoryMutation();
+
+  const deleteCat = id =>{
+    if(window.confirm('Are you really want to delete the category?')){
+      removeCategory(id);
+    }
+  }
+
+  useEffect(()=>{
+    if(response.isSuccess){
+      dispatch(setSuccess(response?.data?.message))
+    }
+  }, [response?.data?.message])
 
   useEffect(() => {
     let timer;
@@ -55,7 +68,7 @@ const Categories = () => {
               <tr key ={category._id} className="odd:bg-gray-600">
                 <td className="p-3 capitalize text-sm font-normal text-gray-400">{category.name}</td>
                 <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link to={`/dashboard/update-category/${category._id}`} className="btn btn-warning">edit</Link></td>
-                <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link>delete</Link></td>
+                <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link className="btn btn-alert" onClick={()=>deleteCat(category._id)} >delete</Link></td>
               </tr>
             ))}
           </tbody>

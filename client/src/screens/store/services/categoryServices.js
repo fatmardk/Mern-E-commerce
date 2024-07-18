@@ -3,7 +3,7 @@ import UpdateCategory from '../../dashboard/UpdateCategory';
 
 export const categoryService = createApi({
   reducerPath: 'category',
-  tagTypes: ['categories'], // Virgül eklenmiş
+  tagTypes: ['categories'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:8080/api/',
     prepareHeaders: (headers, { getState }) => {
@@ -24,32 +24,44 @@ export const categoryService = createApi({
       invalidatesTags: ['categories'],
     }),
 
-    updateCategory : builder.mutation({
-      query:(data)=>{
-        return {
-          url :`update-category/${data.id}`,
-          method:'PUT',
-          body: {name: data.name}
-        }
-      },
+    updateCategory: builder.mutation({
+      query: (data) => ({
+        url: `update-category/${data.id}`,
+        method: 'PUT',
+        body: { name: data.name },
+      }),
       invalidatesTags: ['categories'],
     }),
-    
+
+    deleteCategory: builder.mutation({
+      query: (id) => ({
+        url: `delete-category/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['categories'],
+    }),
+
     getCategories: builder.query({
       query: (page) => `categories/${page}`,
       providesTags: ['categories'],
     }),
-    fetchCategory :builder.query({
-      query:(id)=>{
-        return{
-          url:`fetch-category/${id}`,
-          method:'GET'
-        }
-      }
+
+    fetchCategory: builder.query({
+      query: (id) => ({
+        url: `fetch-category/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['categories'],
     }),
-    invalidatesTags: ['categories'],
   }),
 });
 
-export const { useCreateMutation, useGetCategoriesQuery, useFetchCategoryQuery, useUpdateCategoryMutation } = categoryService;
+export const {
+  useCreateMutation,
+  useGetCategoriesQuery,
+  useFetchCategoryQuery,
+  useUpdateCategoryMutation,
+  useDeleteCategoryMutation
+} = categoryService;
+
 export default categoryService;

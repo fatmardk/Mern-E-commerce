@@ -28,7 +28,7 @@ module.exports.register = async (req, res) => {
 
                 return res.status(201).json({msg:"Your account has been created!", token });
             } else {
-                return res.status(401).json({ errors: [{ msg: `${email} is already taken` }] });
+                return res.status(400).json({ errors: [{ msg: `${email} is already taken` }] });
             }
         } catch (error) {
             console.log(error.message);
@@ -59,7 +59,7 @@ module.exports.login = async (req, res) => {
                       isAdmin: user.admin // Assuming you have an isAdmin field in your User model
                   });
               } else {
-                  return res.status(401).json({ errors: [{ msg: 'Password not matched!' }] });
+                  return res.status(400).json({ errors: [{ msg: 'Password not matched!' }] });
               }
           } else {
               return res.status(404).json({ errors: [{ msg: 'User not found' }] });
