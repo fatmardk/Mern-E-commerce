@@ -1,0 +1,28 @@
+.alert-danger{
+  @apply text-rose-600 bg-red-200 bg-opacity-60 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-rose-600
+}
+.alert-success{
+  @apply text-green-900 bg-green-200 bg-opacity-65 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-green-900
+}
+.pagination-link{
+  @apply border border-[#907c69] text-white rounded-3xl text-sm font-medium block py-2 px-4 bg-[#645649]
+}
+
+.size{
+  @apply border border-white ml-2 px-3 py-1.5 mt-2 uppercase cursor-pointer rounded text-sm
+}
+.input-file{
+  @apply block file:py-2.5 file:px-4 file:rounded file:cursor-pointer file:bg-[#907c69] file:border-white file:text-white file:text-sm file:font-medium file:mr-4
+}
+
+.preview-image{
+  @apply w-full max-h-[190px] h-full rounded-md overflow-hidden mt-3
+}
+
+.ql-toolbar.ql-snow{
+  @apply border-white
+}
+
+.ql-container.ql-snow{
+  @apply border-white placeholder:text-black text-black bg-white
+}

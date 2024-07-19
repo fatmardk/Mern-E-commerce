@@ -28,6 +28,7 @@
     "express-validator": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.5",
+    "react-quill": "^2.0.0",
     "safe-buffer": "^5.2.1"
   }
 }
