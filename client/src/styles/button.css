@@ -4,7 +4,7 @@
 
 
 .btn-dark{
-  @apply bg-darkgreen px-4 py-3 capitalize font-medium mt-5;
+  @apply bg-[#b49c84] px-4 py-3 capitalize font-medium mt-5;
 }
 
 .btn-indigo{

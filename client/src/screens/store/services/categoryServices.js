@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import UpdateCategory from '../../dashboard/UpdateCategory';
 
 export const categoryService = createApi({
   reducerPath: 'category',
@@ -53,6 +52,14 @@ export const categoryService = createApi({
       }),
       providesTags: ['categories'],
     }),
+
+    allCategories: builder.query({
+      query: () => ({
+        url: 'allcategories',
+        method: 'GET',
+      }),
+      providesTags: ['categories'],
+    }),
   }),
 });
 
@@ -61,7 +68,8 @@ export const {
   useGetCategoriesQuery,
   useFetchCategoryQuery,
   useUpdateCategoryMutation,
-  useDeleteCategoryMutation
+  useDeleteCategoryMutation,
+  useAllCategoriesQuery,
 } = categoryService;
 
 export default categoryService;

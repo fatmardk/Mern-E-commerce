@@ -1,0 +1,7 @@
+.form-control{
+  @apply bg-[#9b8978] p-3 rounded-sm outline-none w-full opacity-95 placeholder-[#ead5c0] focus:ring-[2px] ring-white transition-all duration-200 placeholder:capitalize
+}
+
+.label{
+  @apply block mb-2 text-base capitalize text-white
+}

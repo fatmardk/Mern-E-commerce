@@ -2,7 +2,7 @@
 
 const ScreenHeader = ({children}) => {
   return (
-    <div className="border-b border-darkgreen pb-5 mb-5">
+    <div className="border-b border-[#b49c84] pb-5 mb-5">
       {children}
     </div>
   )

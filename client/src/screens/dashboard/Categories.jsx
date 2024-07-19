@@ -55,9 +55,9 @@ const Categories = () => {
       {success && <div className="alert-success">{success}</div>}
       
       {!isFetching ? data?.categories?.length >0 && <><div>
-        <table className="w-full bg-gray-800 rounded-md">
+        <table className="w-full bg-[#907c69] rounded-md">
           <thead>
-            <tr className="border-b border-gray-100 text-left">
+            <tr className="border-b border-white text-left">
               <td className="p-3 uppercase text-base font-medium">name</td>
               <td className="p-3 uppercase text-base font-medium">edit</td>
               <td className="p-3 uppercase text-base font-medium">delete</td>
@@ -65,8 +65,8 @@ const Categories = () => {
           </thead>
           <tbody>
             {data?.categories?.map(category => (
-              <tr key ={category._id} className="odd:bg-gray-600">
-                <td className="p-3 capitalize text-sm font-normal text-gray-400">{category.name}</td>
+              <tr key ={category._id} className="odd:bg-[#b49c84]">
+                <td className="p-3 capitalize text-sm font-normal text-white">{category.name}</td>
                 <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link to={`/dashboard/update-category/${category._id}`} className="btn btn-warning">edit</Link></td>
                 <td className="p-3 capitalize text-sm font-normal text-gray-400"><Link className="btn btn-alert" onClick={()=>deleteCat(category._id)} >delete</Link></td>
               </tr>

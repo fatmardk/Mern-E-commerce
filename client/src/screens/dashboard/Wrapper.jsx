@@ -20,9 +20,9 @@ const Wrapper = ({children}) => {
     <>
     <Sidebar side={side} closeSideBar={closeSideBar}/>
     <AdminNav openSideBar={openSideBar}/>
-    <section className=' ml-0 sm:ml-64 min-h-screen pt-28 px-4 bg-stone-200'>
+    <section className=' ml-0 sm:ml-64 min-h-screen pt-28 px-4 bg-[#f3e7db]'>
       
-      <div className='bg-dashboard text-white p-4'>
+      <div className='bg-[#e1c4a5] text-white px-4 py-6'>
        {children}
       </div>
     </section>
