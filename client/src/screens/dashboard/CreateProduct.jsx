@@ -1,11 +1,15 @@
 import ScreenHeader from "../../components/ScreenHeader";
 import Wrapper from "./Wrapper";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { TwitterPicker } from "react-color";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { useAllCategoriesQuery } from "../store/services/categoryServices";
-import Spinner from "../../components/Spinner"; 
-import { useState } from "react";
+import { useCreateProductMutation } from "../store/services/productService";
+import Spinner from "../../components/Spinner";
+import toast, {Toaster} from 'react-hot-toast'; 
+import {setSuccess} from "../store/reducers/globalReducer" 
+import { useState, useEffect } from "react";
 import Colors from "../../components/Colors";
 import SizeList from "../../components/SizeList";
 import ImagesPreview from "../../components/ImagesPreview";
@@ -16,6 +20,9 @@ const CreateProduct = () => {
   const { data = [], isLoading, isSuccess } = useAllCategoriesQuery();
 
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate ();
+
 
   const [state, setState] = useState({
     title: '',
@@ -58,8 +65,10 @@ const CreateProduct = () => {
         setPreview({ ...preview, [e.target.name]: reader.result });
       };
       reader.readAsDataURL(e.target.files[0]);
-    }
+    } 
   };
+  
+  
 
   const handleInput = e => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -85,6 +94,39 @@ const CreateProduct = () => {
     setSizeList(filtered);
   };
 
+  const [createNewProduct,response] = useCreateProductMutation();
+
+  console.log('your response', response);
+
+  const createPro = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(state));
+    formData.append('sizes', JSON.stringify(sizeList));
+    formData.append('description', value);
+    formData.append('image1', state.image1);
+    formData.append('image2', state.image2);
+    formData.append('image3', state.image3);
+    createNewProduct(formData);
+  };
+
+  useEffect(()=>{
+    if(!response.isSuccess){
+      response?.error?.data?.errors.map(err => {
+        toast.error(err.msg);
+      })
+    }
+  },[response?.error?.data?.errors])
+
+  useEffect (()=>{
+    if(response?.isSuccess){
+      dispatch(setSuccess(response?.data?.msg))
+      navigate('/dashboard/products')
+      
+    }
+  }, [response?.isSuccess])
+  
+
   return (
     <Wrapper>
       <ScreenHeader>
@@ -92,8 +134,9 @@ const CreateProduct = () => {
           <i className="bi bi-arrow-left"></i>Product List
         </Link>
       </ScreenHeader>
+      <Toaster position="top-right" reverseOrder={true}/>
       <div className="flex flex-wrap -mx-3">
-        <div className="w-full xl:w-8/12 p-3">
+        <form className="w-full xl:w-8/12 p-3" onSubmit={createPro}>
           <div className="flex flex-wrap">
             <div className="w-full md:w-6/12 p-3">
               <label htmlFor="title" className="label">Title</label>
@@ -172,10 +215,10 @@ const CreateProduct = () => {
             </div>
 
             <div className="w-full p-3">
-              <input type="submit" value="save product" className="btn btn-dark"/>
+              <input type="submit" value={response.isLoading ? 'loading...' : 'save product'} disabled={response.isLoading ? true : false} className="btn btn-dark"/>
             </div>
           </div>
-        </div>
+        </form>
         
         <div className="w-full xl:w-4/12 p-3">
           <Colors colors={state.colors} deleteColor={deleteColor} />

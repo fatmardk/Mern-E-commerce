@@ -16,6 +16,8 @@ const Routing = () => {
         <Route path="/auth/admin-login" element={<Public><AdminLogin /></Public>} />
         
         <Route path="/dashboard/products" element={<Private><Products /></Private>} />
+
+        <Route path="/dashboard/products/:page" element={<Private><Products /></Private>} />
         
         <Route path="/dashboard/categories" element={<Private><Categories /></Private>} />
         

@@ -19,7 +19,7 @@ const Pagination = ({ page, count, perPage, path }) => {
     for (let i = startLoop; i <= endLoop; i++) {
       allLinks.push(
         <li key={i}>
-          <Link className={`pagination-link ${page ===i && 'bg-[#9b8978] text-white'}`} to={`/${path}/${i}`}>{i}</Link>
+          <Link className={`pagination-link ${page ===i && 'bg-[#ffdebf] text-white'}`} to={`/${path}/${i}`}>{i}</Link>
         </li>
       );
     }
