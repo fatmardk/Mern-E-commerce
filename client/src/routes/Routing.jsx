@@ -8,6 +8,7 @@ import Categories from "../screens/dashboard/Categories";
 import CreateCategory from "../screens/dashboard/CreateCategory";
 import UpdateCategory from "../screens/dashboard/UpdateCategory";
 import CreateProduct from "../screens/dashboard/CreateProduct";
+import EditProduct from "../screens/dashboard/EditProduct"
 
 const Routing = () => {
   return (
@@ -18,6 +19,8 @@ const Routing = () => {
         <Route path="/dashboard/products" element={<Private><Products /></Private>} />
 
         <Route path="/dashboard/products/:page" element={<Private><Products /></Private>} />
+
+        <Route path="/dashboard/update-product/:id" element={<Private><EditProduct /></Private>} />
         
         <Route path="/dashboard/categories" element={<Private><Categories /></Private>} />
         

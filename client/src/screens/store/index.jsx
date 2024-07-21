@@ -17,7 +17,7 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       authService.middleware,
       categoryService.middleware,
-      productService.middleware // Add the productService middleware
+      productService.middleware
     ),
 });
 
