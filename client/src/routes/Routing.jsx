@@ -9,11 +9,20 @@ import CreateCategory from "../screens/dashboard/CreateCategory";
 import UpdateCategory from "../screens/dashboard/UpdateCategory";
 import CreateProduct from "../screens/dashboard/CreateProduct";
 import EditProduct from "../screens/dashboard/EditProduct"
+import Home from "../screens/home/Home"
+import Login from "../screens/home/auth/Login";
+import Register from "../screens/home/auth/Register";
+import Dashboard from "../screens/users/Dashboard";
 
 const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home/>}/>
+
+        <Route path="login" element={<Login/>}/>
+        <Route path="register" element={<Register/>}/>
+        <Route path="/user" element={<Dashboard/>}/>
         <Route path="/auth/admin-login" element={<Public><AdminLogin /></Public>} />
         
         <Route path="/dashboard/products" element={<Private><Products /></Private>} />

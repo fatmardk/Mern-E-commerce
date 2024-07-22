@@ -5,6 +5,7 @@ const connect = require('./config/db');
 const cors = require('cors');
 const userRoutes = require("./routes/userRoutes")
 const categoryRoutes=require("./routes/categoryRoutes")
+const productRoutes = require("./routes/productRoutes")
 
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/api',userRoutes);
 app.use('/api',categoryRoutes);
+app.use('/api',productRoutes);
 
 
 
