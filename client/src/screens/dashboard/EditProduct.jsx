@@ -10,7 +10,7 @@ import h2p from "html2plaintext";
 import "react-quill/dist/quill.snow.css";
 import ScreenHeader from "../../components/ScreenHeader";
 import Wrapper from "./Wrapper";
-import { useAllCategoriesQuery } from "../store/services/categoryServices";
+import { useAllCategoriesQuery } from "../store/services/categoryService";
 import {
   useUpdateProductMutation,
   useGetProductQuery,

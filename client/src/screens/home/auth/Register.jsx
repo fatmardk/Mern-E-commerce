@@ -7,21 +7,19 @@ import { useDispatch } from "react-redux";
 import { useUserRegisterMutation } from "../../store/services/authService";
 import {setUserToken} from "../../store/reducers/authReducer"
 import {setSuccess} from "../../store/reducers/globalReducer"
+import { useForm } from "../../../hooks/Form";
+import { showError } from "../../../utils/ShowError";
 
 const Register = () => {
   const [errors, setErrors] = useState([]);
-  const [state, setState] = useState({
+
+  const {state,onChange} = useForm({
     name: '',
-    email: '',
-    password: ''
-  });
+    email:'',
+    password:''
+  })
 
   const [registerUser, response] = useUserRegisterMutation();
-  console.log(response);
-
-  const onChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -47,11 +45,6 @@ const Register = () => {
     }
   },[response.isSuccess])
 
-  const showError = (name) => {
-    const exist = errors.find((err) => err.path === name);
-    return exist ? exist.msg : false;
-  };
-
 
 
   return (
@@ -75,12 +68,12 @@ const Register = () => {
                   type="text"
                   name="name"
                   id="name"
-                  className={`form-input ${showError('name') ? 'border-rose-600 bg-rose-50' : 'border-gray-300'}`}
+                  className={`form-input ${showError(errors,'name') ? 'border-rose-600 bg-rose-50' : 'border-gray-300'}`}
                   placeholder="Name..."
                   value={state.name}
                   onChange={onChange}
                 />
-                {showError('name') && <span className="text-red-600">{showError('name')}</span>}
+                {showError(errors,'name') && <span className="text-red-600">{showError(errors,'name')}</span>}
               </div>
 
               <div className="mb-4">
@@ -89,12 +82,12 @@ const Register = () => {
                   type="email"
                   name="email"
                   id="email"
-                  className={`form-input ${showError('email') ? 'border-rose-600 bg-rose-50' : 'border-gray-300'}`}
+                  className={`form-input ${showError(errors,'email') ? 'border-rose-600 bg-rose-50' : 'border-gray-300'}`}
                   placeholder="Email..."
                   value={state.email}
                   onChange={onChange}
                 />
-                {showError('email') && <span className="text-red-600">{showError('email')}</span>}
+                {showError(errors,'email') && <span className="text-red-600">{showError(errors,'email')}</span>}
               </div>
 
               <div className="mb-4">
@@ -103,16 +96,16 @@ const Register = () => {
                   type="password"
                   name="password"
                   id="password"
-                  className={`form-input ${showError('password') ? 'border-rose-600 bg-rose-50' : 'border-gray-300'}`}
+                  className={`form-input ${showError(errors,'password') ? 'border-rose-600 bg-rose-50' : 'border-gray-300'}`}
                   placeholder="Password..."
                   value={state.password}
                   onChange={onChange}
                 />
-                {showError('password') && <span className="text-red-600">{showError('password')}</span>}
+                {showError(errors,'password') && <span className="text-red-600">{showError(errors,'password')}</span>}
               </div>
 
               <div className="mb-4">
-                <input type="submit" value="Sign in" className="btn btn-dark w-full" />
+                <input type="submit" value={`${response.isLoading ? 'Loading...' : 'sign up'}`} className="btn btn-dark w-full" disabled={response.isLoading ? true : false}/>
               </div>
 
               <div>

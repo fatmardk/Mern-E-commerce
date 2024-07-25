@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {useEffect } from "react";
 import { clearMessage, setSuccess } from "../store/reducers/globalReducer";
 import { useLocation } from "react-router-dom";
-import { useGetCategoriesQuery,useDeleteCategoryMutation } from "../store/services/categoryServices";
+import { useGetQuery,useDeleteCategoryMutation } from "../store/services/categoryService";
 import Spinner from "../../components/Spinner";
 import Pagination from "../../components/Pagination";
 
@@ -18,7 +18,7 @@ const Categories = () => {
   const {success} = useSelector(state => state.globalReducer)
   const dispatch = useDispatch();
   const location = useLocation();
-  const {data = [],isFetching} = useGetCategoriesQuery(page);
+  const {data = [],isFetching} = useGetQuery(page);
   const [removeCategory, response] = useDeleteCategoryMutation();
 
   const deleteCat = id =>{

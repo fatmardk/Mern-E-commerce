@@ -2,7 +2,7 @@ import ScreenHeader from "../../components/ScreenHeader";
 import Wrapper from "./Wrapper";
 import { Link, useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
-import { useCreateMutation } from "../store/services/categoryServices";
+import { useCreateMutation } from "../store/services/categoryService";
 import { setSuccess } from "../store/reducers/globalReducer";
 import { useDispatch } from "react-redux";
 

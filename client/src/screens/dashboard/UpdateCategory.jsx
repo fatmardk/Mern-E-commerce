@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { setSuccess } from "../store/reducers/globalReducer";
 import { useDispatch } from "react-redux";
-import { useFetchCategoryQuery, useUpdateCategoryMutation } from "../store/services/categoryServices";
+import { useFetchCategoryQuery, useUpdateCategoryMutation } from "../store/services/categoryService";
 import Spinner from "../../components/Spinner";
 
 const UpdateCategory = () => {

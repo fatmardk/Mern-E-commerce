@@ -4,7 +4,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { TwitterPicker } from "react-color";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
-import { useAllCategoriesQuery } from "../store/services/categoryServices";
+import { useGetQuery } from "../store/services/categoryService";
 import { useCreateProductMutation } from "../store/services/productService";
 import Spinner from "../../components/Spinner";
 import toast, {Toaster} from 'react-hot-toast'; 
@@ -17,7 +17,7 @@ import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 
 const CreateProduct = () => {
-  const { data = [], isLoading, isSuccess } = useAllCategoriesQuery();
+  const { data = [], isLoading, isSuccess } = useGetQuery();
 
   const [value, setValue] = useState('');
   const dispatch = useDispatch();

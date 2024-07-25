@@ -9,7 +9,7 @@ const hashedPassword = async (password) => {
 };
 
 const createToken = async (user) => {
-    return jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, {
+    return jwt.sign({ id: user._id, name: user.name }, process.env.JWT_SECRET, {
         expiresIn: '30d',
     });
 };
