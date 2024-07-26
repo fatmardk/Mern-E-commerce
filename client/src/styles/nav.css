@@ -1,5 +1,5 @@
 .nav{
-  @apply w-full h-[70px] flex items-center shadow
+  @apply w-full h-[70px] flex items-center shadow z-50
 }
 
 .nav-li{

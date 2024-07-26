@@ -15,12 +15,15 @@ import Register from "../screens/home/auth/Register";
 import Dashboard from "../screens/users/Dashboard";
 import UserRoute from "./UserRoute";
 import UserAuthRoute from "./UserAuthRoute";
+import CatProduct from "../screens/home/CatProduct"
 
 const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="cat-products/:name" element={<CatProduct/>}/>
+        <Route path="cat-products/:name/:page" element={<CatProduct/>}/>
         <Route element={<UserAuthRoute/>}>
         <Route path="login" element={<Login/>}/>
         <Route path="register" element={<Register/>}/>

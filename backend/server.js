@@ -6,6 +6,7 @@ const cors = require('cors');
 const userRoutes = require("./routes/userRoutes")
 const categoryRoutes=require("./routes/categoryRoutes")
 const productRoutes = require("./routes/productRoutes")
+const review = require("./models/Reviews")
 
 
 dotenv.config();
