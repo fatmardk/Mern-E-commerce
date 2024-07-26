@@ -11,7 +11,7 @@ router.post('/create-product', [Authorization.authorized], Product.create);
 
 router.get('/products/:page', Authorization.authorized, Product.get);
 
-router.get('/product/:id', Authorization.authorized, Product.fetch); 
+router.get('/product/:id', Product.fetch); 
 
 router.put(
   "/product",

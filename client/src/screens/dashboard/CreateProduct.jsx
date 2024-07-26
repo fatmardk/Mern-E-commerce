@@ -94,6 +94,7 @@ const CreateProduct = () => {
     setSizeList(filtered);
   };
 
+
   const [createNewProduct,response] = useCreateProductMutation();
 
   console.log('your response', response);
@@ -160,16 +161,22 @@ const CreateProduct = () => {
 
             <div className="w-full md:w-6/12 p-3">
               <label htmlFor="category" className="label">Categories</label>
-              {!isLoading && isSuccess ? (
-                data?.categories?.length > 0 && (
-                  <select name="category" id="category" className="form-control" onChange={handleInput} value={state.category}>
-                    <option>Choose category</option>
-                    {data?.categories?.map(category => (
-                      <option value={category.name} key={category._id}>
-                        {category.name}
-                      </option>
-                    ))}
-                  </select>
+              {!isLoading ? (
+                  data?.categories?.length > 0 && (
+                    <select
+                      name="category"
+                      id="categories"
+                      className="form-control"
+                      onChange={handleInput}
+                      value={state.category}
+                    >
+                      <option value="">Choose category</option>
+                      {data?.categories?.map((category) => (
+                        <option value={category.name} key={category._id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
                 )
               ) : (
                 <Spinner />

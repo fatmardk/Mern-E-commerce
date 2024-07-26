@@ -12,7 +12,7 @@ import Pagination from "../../components/Pagination";
 const Products = () => {
   const { page = 1 } = useParams(); 
   const { data = {}, isFetching } = useGetProductsQuery(page);
-  console.log(data);
+
   const { success } = useSelector(state => state.globalReducer);
   const dispatch = useDispatch();
 

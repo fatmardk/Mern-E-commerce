@@ -1,19 +1,21 @@
 import React from 'react';
 import Nav from '../../components/home/Nav';
 import Header from '../../components/home/Header';
-import { useParams, Link } from 'react-router-dom';
-import currency from "currency-formatter"
+import { useParams} from 'react-router-dom';
 import { useCatProductsQuery } from "../../screens/store/services/homeProducts";
 import Pagination from '../../components/Pagination';
 import ProductSkeleton from "../../components/home/ProductSkeleton";
 import Skeleton from '../../components/skeleton/Skeleton';
 import Thumbnail from '../../components/skeleton/Thumbnail';
 import Text from '../../components/skeleton/Text';
+import ProductCard from '../../components/home/ProductCard';
 // import ProductCard from "../../components/home/ProductCard";
 
 const CatProduct = () => {
   const { name, page = 1 } = useParams();
   const { data, isFetching } = useCatProductsQuery({ name, page: parseInt(page) });
+  console.log(name);
+  const encodedName = encodeURIComponent(name); 
   
   return (
     <>
@@ -30,7 +32,7 @@ const CatProduct = () => {
                 key={item}
               >
                 <Skeleton>
-                  <Thumbnail />
+                  <Thumbnail height="320px"/>
                   <Text mt="15px" />
                 </Skeleton>
               </div>
@@ -42,33 +44,20 @@ const CatProduct = () => {
           <div className='flex flex-wrap -mx-5'>
             
             {data.products.map((product) => {
-              const percentage = product.discount/100;
-              const discountPrice = product.price - (product.price * percentage)
-              console.log(discountPrice);
+              
               return(
-                <div className='w-full md:w-3/12 p-4 px-5 py-10' key={product._id}>
-                <Link to={`/product/${product._id}`}>
-                  <div className="w-full">
-                    <img
-                      src={`/images/${product.image1}`}
-                      alt={product.name}
-                      className='w-full h-[280px] object-cover'
-                    />
-                  </div>
-                  <p className='capitalize text-base font-medium text-black my-2.5'>{product.title}</p>
-                  <div className="flex justify-between">
-                    <del className='text-lg font-medium text-gray-600'>
-                      {currency.format(product.price, {code:"USD"})}
-                    </del>
-                    <span className='text-lg font-medium text-rose-600'>
-                      {currency.format(discountPrice, {code:"USD"})}
-                    </span>
-                  </div>
-                </Link>
-              </div>
+                <ProductCard product={product}/>
+                 
               )
             })}
           </div>
+          <Pagination
+              page={parseInt(page)}
+              count={data.count}
+              perPage={data.perPage}
+              path={`cat-products/${encodedName}`}
+              theme="light"
+            />
           </>
         ) : (
           <p className='alert-danger'>No products found in {name} category</p>

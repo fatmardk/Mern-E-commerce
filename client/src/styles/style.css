@@ -5,7 +5,15 @@
   @apply text-green-900 bg-green-200 bg-opacity-65 p-3 mb-2 rounded-sm text-sm font-medium border-l-4 border-green-900
 }
 .pagination-link{
-  @apply border border-[#907c69] text-white rounded-3xl text-sm font-medium block py-2 px-4 bg-[#817264]
+  @apply border border-[#907c69] text-white rounded-3xl text-sm font-medium block py-2 px-4 bg-[#817264] border-r-0
+}
+
+.pagination-link-light{
+  @apply border border-[#f4d6bb] text-white rounded-3xl text-sm font-medium block py-2 px-4 bg-[#817264]
+}
+
+.pagination-li{
+  @apply border-r-0 border-r-gray-400
 }
 
 .size{
