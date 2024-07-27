@@ -1,6 +1,6 @@
 import Skeleton from "../skeleton/Skeleton";
 import Thumbnail from "../skeleton/Thumbnail";
-// import Text from "../skeleton/Text";
+import Text from "../skeleton/Text";
 const ProductSkeleton = () => {
   return (
     <div className="flex flex-wrap -mx-4 mb-10">
@@ -11,8 +11,8 @@ const ProductSkeleton = () => {
         >
           <Skeleton>
             <Thumbnail height="320px" />
-            {/* <Text mt="10px" />
-            <Text mt="10px" /> */}
+            <Text mt="10px" />
+            <Text mt="10px" />
           </Skeleton>
         </div>
       ))}
