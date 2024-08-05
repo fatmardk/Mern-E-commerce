@@ -170,7 +170,7 @@ export default {
       button:"#4e574f",
       sidebarbg:"#332f1a",
       sidebarhv:"#474330",
-      navbar:"#cfb582",
+      navbar:"#332f1a",
       dashboard:"#8d9d8f",
       lightgreen2:"#c2b8c1"
     }),

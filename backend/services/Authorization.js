@@ -8,7 +8,7 @@ class Authorization {
       const token = headerToken.split('Bearer ')[1];
       try {
         const verified = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = verified; // Set the decoded token data to req.user
+        req.user = verified;
         next();
       } catch (error) {
         return res.status(401).json({ errors: [{ msg: 'Please add a valid token!' }] });

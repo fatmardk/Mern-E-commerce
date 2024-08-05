@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
   },
   admin: {
     type: Boolean,
-    required: [true, "Lütfen şifre giriniz"],
     default:false
   }
 }, {
