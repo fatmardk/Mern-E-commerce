@@ -17,6 +17,7 @@ import UserRoute from "./UserRoute";
 import UserAuthRoute from "./UserAuthRoute";
 import CatProduct from "../screens/home/CatProduct"
 import Product from "../screens/home/Product";
+import Cart from "../screens/home/Cart";
 
 const Routing = () => {
   return (
@@ -55,6 +56,8 @@ const Routing = () => {
         <Route path="/dashboard/update-category/:id" element={<Private><UpdateCategory /></Private>} />
 
         <Route path="/dashboard/create-product" element={<Private><CreateProduct /></Private>} />
+
+        <Route path="cart" element={<Cart/>} />
       </Routes>
     </BrowserRouter>
   );
