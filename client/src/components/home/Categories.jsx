@@ -49,7 +49,7 @@ const Categories = () => {
         }}
       >
         {data.categories.map((category, index) => {
-          if (i >= 8) {
+          if (i >= 9) {
             i = 1;
           } else {
             i++;

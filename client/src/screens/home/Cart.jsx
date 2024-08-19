@@ -26,7 +26,6 @@ const Cart = () => {
     dispatch(decQuantity(id));
   };
   const remove = (id) => {
-    // verify user that you are really want to delete the project or item
     if (window.confirm("Are you sure you want to delete this item?")) {
       dispatch(removeItem(id));
     }
@@ -112,7 +111,7 @@ const Cart = () => {
                             quantity={item.quantity}
                             inc={() => inc(item._id)}
                             dec={() => dec(item._id)}
-                            theme="indigo"
+                            theme="gray"
                           />
                         </td>
                         <td className="td font-bold ">{total}</td>
@@ -130,13 +129,13 @@ const Cart = () => {
                 </tbody>
               </table>
             </div>
-            <div className="bg-indigo-50 p-4 flex justify-end mt-5 rounded-md">
+            <div className="bg-lime-50 p-4 flex justify-end mt-5 rounded-md">
               <div>
-                <span className="text-lg font-semibold text-indigo-800 mr-10">
+                <span className="text-lg font-semibold text-cyan-950 mr-10">
                   {currency.format(total, { code: "USD" })}
                 </span>
                 <button
-                  className="btn bg-indigo-600 text-sm font-medium py-2.5"
+                  className="btn bg-darkgreen text-sm font-medium py-2.5"
                   onClick={pay}
                 >
                   {response.isLoading ? "Loading..." : "checkout"}

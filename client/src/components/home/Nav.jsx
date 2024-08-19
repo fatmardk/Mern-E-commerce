@@ -3,9 +3,11 @@ import duckstore from '../../assets/duckstore.png'
 import {FiSearch} from "react-icons/fi"
 import { IoBagOutline } from "react-icons/io5";
 import {useSelector} from "react-redux"
+
 const Nav = () => {
-  const {userToken,user} = useSelector(state => state.authReducer)
-  console.log(user);
+  const {userToken,user} = useSelector(state => state.authReducer);
+  const { items, total } = useSelector((state) => state.cartReducer);
+  console.log(total);
   return (
     <nav className="nav">
       <div className="my-container">
@@ -32,7 +34,7 @@ const Nav = () => {
             <li className="nav-li relative">
               <Link to="/cart">
               <IoBagOutline size={18} />
-              <span className="nav-circle">10</span>
+              <span className="nav-circle">{items}</span>
               </Link>
             </li>
           </ul>
